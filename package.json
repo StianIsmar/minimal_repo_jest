@@ -3,18 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.12.5",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "identity-obj-proxy": "^3.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
+    "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -34,5 +37,42 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "verbose": false,
+    "rootDir": ".",
+    "collectCoverageFrom": [
+      "**/*.{js,jsx,ts,tsx}",
+      "!**/*.d.ts"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx"
+    ],
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass|svg)$": "identity-obj-proxy",
+      "styled-components": "<rootDir>/node_modules/styled-components/dist/styled-components.cjs.js"
+    },
+    "transform": {
+      "\\.[jt]sx?$": "babel-jest",
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.svg$": "<rootDir>/svgTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testMatch": [
+      "**/*.{spec,test}.{js,jsx,ts,tsx}"
+    ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "jest-svg-transformer": "^1.0.0"
   }
 }
