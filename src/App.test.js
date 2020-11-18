@@ -1,8 +1,36 @@
 import React from "react"
 import App from './App'
-import { render, screen } from "@testing-library/react";
+import '@testing-library/jest-dom'
+import { render } from "@testing-library/react";
 
-test("renders correct content", () => {
-  const { getByText, getByLabelText } = render(<App />)
-  screen.debug()
+describe('testing app.js', () => {
+
+  // To reset manually mocked values
+  beforeEach(() => {
+    jest.resetModules()
+  });
+
+  test("SET CONSTANT TO 1", () => {
+    jest.doMock('./myConstants.js', () => ({
+      CONSTANT: {
+        NUMBER: 1
+      }
+    }))
+    const { getByText, getByLabelText } = render(<App />)
+    expect(getByText('1')).toBeInTheDocument()
+
+  })
+
+  test("SET CONSTANT TO 3", () => {
+    jest.doMock('./myConstants.js', () => ({
+      CONSTANT: {
+        NUMBER: 3
+      }
+    }))
+    const { getByText, getByLabelText } = render(<App />)
+    expect(getByText('3')).toBeInTheDocument()
+
+  })
+
+
 })

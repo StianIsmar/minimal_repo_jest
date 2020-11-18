@@ -1,18 +1,13 @@
 import React from "react"
-import styled from "styled-components";
-import NoAccess_ from './NO_ACCESS.svg';
+import { CONSTANT } from './myConstants.js'
 
-
-const NoAccess = styled(NoAccess_)`
-  width: 100px;
-  height: 75px;
-`;
-
+console.log(CONSTANT)
 
 const App = () => {
   return (
     <div>
-      <NoAccess />    </div>
+      {CONSTANT.NUMBER}
+    </div>
   );
 }
 

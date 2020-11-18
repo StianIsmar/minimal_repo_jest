@@ -1,0 +1,1 @@
+export const CONSTANT = { NUMBER: 2 }

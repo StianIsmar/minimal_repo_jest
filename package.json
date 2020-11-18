@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.12.5",
-    "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "identity-obj-proxy": "^3.0.0",
@@ -52,13 +51,13 @@
       "tsx"
     ],
     "moduleNameMapper": {
-      "\\.(css|less|scss|sass|svg)$": "identity-obj-proxy",
+      "\\.(css|less|scss|sass)$": "identity-obj-proxy",
       "styled-components": "<rootDir>/node_modules/styled-components/dist/styled-components.cjs.js"
     },
     "transform": {
       "\\.[jt]sx?$": "babel-jest",
       "^.+\\.jsx?$": "babel-jest",
-      "^.+\\.svg$": "<rootDir>/svgTransform.js"
+      "^.+\\.svg$": "jest-svg-transformer"
     },
     "transformIgnorePatterns": [
       "/node_modules/"
@@ -71,6 +70,7 @@
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
+    "@testing-library/jest-dom": "^5.11.6",
     "babel-jest": "^26.6.3",
     "jest": "^26.6.3",
     "jest-svg-transformer": "^1.0.0"
