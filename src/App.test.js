@@ -10,27 +10,24 @@ describe('testing app.js', () => {
     jest.resetModules()
   });
 
-  test("SET CONSTANT TO 1", () => {
-    jest.doMock('./myConstants.js', () => ({
+  jest.doMock('./myConstants.js', () => {
+    return {
+      __esModule: true,
       CONSTANT: {
         NUMBER: 1
       }
-    }))
-    const { getByText, getByLabelText } = render(<App />)
-    expect(getByText('1')).toBeInTheDocument()
-
+    }
   })
 
-  test("SET CONSTANT TO 3", () => {
-    jest.doMock('./myConstants.js', () => ({
-      CONSTANT: {
-        NUMBER: 3
-      }
-    }))
-    const { getByText, getByLabelText } = render(<App />)
-    expect(getByText('3')).toBeInTheDocument()
+  test("SET CONSTANT TO 1", () => {
 
+
+    // Wait for mock done
+    return import('./myConstants.js').then((constants) => {
+      console.log(constants.CONSTANT.NUMBER)
+      expect(constants.CONSTANT.NUMBER).toBe(1)
+      const { getByText, getByLabelText } = render(<App />)
+      expect(getByText('1')).toBeInTheDocument()
+    })
   })
-
-
 })

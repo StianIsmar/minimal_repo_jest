@@ -1,9 +1,10 @@
 import React from "react"
-import { CONSTANT } from './myConstants.js'
+// import { CONSTANT } from './myConstants.js'
 
-console.log(CONSTANT)
+// console.log("THIS IS IN THE COMPONENT:", CONSTANT)
 
 const App = () => {
+  const { CONSTANT } = require('./myConstants.js')
   return (
     <div>
       {CONSTANT.NUMBER}
